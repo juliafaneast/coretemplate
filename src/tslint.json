@@ -1,0 +1,22 @@
+{
+  "extends": "tslint:latest",
+  "rules": {
+    "class-name": false,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ],
+    "interface-name": [true,"never-prefix"],
+    "no-string-literal": true,
+    "member-access": false,
+    "array-type": [
+      true,
+      "array-simple"
+    ]
+  },
+  "exclude": [
+    "**/node_modules/**"
+  ]
+}

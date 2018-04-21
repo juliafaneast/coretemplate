@@ -1,0 +1,23 @@
+import * as winston from "winston";
+import nodemailer = require('nodemailer');
+export class EmailMessageService{
+    private static _instance : EmailMessageService = new EmailMessageService();
+    public getInstance():EmailMessageService{
+    return EmailMessageService._instance;
+}
+    public sendTemplateEmail(emailMessage : TemplateEmail){
+        let transporter = nodemailer.createTransport(emailMessage._transport);
+        transporter.sendMail(emailMessage._mailOption,function (error,info) {
+           if (error){
+               return winston.info(error);
+           }
+           return winston.info('Message %s sent: %s', info.messageId, info.response);
+        }) ;
+    }
+}
+export class TemplateEmail{
+    _mailOption : any;
+    _transport : any;
+}
+
+
